@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BiCrown } from "react-icons/bi";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import { AiFillFileText, AiFillBulb, AiFillAudio } from "react-icons/ai";
@@ -5,6 +6,7 @@ import heroImg from './assets/hero.png'
 import './App.css'
 
 function App() {
+  const [showLogin, setShowLogin] = useState(false);
   return (
     <>
     <nav>
@@ -21,14 +23,16 @@ function App() {
   <section className="hero">
   <div className="hero__text">
     <h2>Gain more knowledge in less time</h2>
+    </div>
 
     <p>
       Great summaries for busy people, individuals who barely have time to read,
       and even people who aren't into reading.
     </p>
 
-    <button>Login</button>
-  </div>
+    <button onClick={() => setShowLogin(true)}>
+        Login
+</button>
 
   <img src={heroImg} alt="Books" />
 </section>
@@ -149,7 +153,7 @@ function App() {
     and effort in reading and comprehending books. Highly recommend it to all
     book lovers.
   </div>
-
+   </div>
   <div className="review">
   <div className="review__header">
     <div className="review__name">David B.</div>
@@ -209,45 +213,89 @@ function App() {
     of the book's content.
   </div>
   <div className="reviews__btn--wrapper">
-  <button className="btn home__cta--btn">Login</button>
-</div>
 </div>
 </div>
   </div>
 </section>
+<button onClick={() => setShowLogin(true)}>
+  Login
+</button>
+
 <section className="numbers">
   <h2>Start growing with Summarist now</h2>
 
   <div className="numbers__wrapper">
-   <div className="numbers__card">
-    <div className="numbers__icon">
-  <BiCrown />
-</div>
-  <div className="numbers__title">3 Million</div>
-  <div className="numbers__sub--title">
-    Downloads on all platforms
-  </div>
-  <div className="numbers__card">
-    <div className="numbers__icon numbers__star--icon">
-  <BsStarFill />
-  <BsStarFill />
-  <BsStarFill />
-  <BsStarFill />
-  <BsStarHalf />
-</div>
-  <div className="numbers__title">4.5 Stars</div>
-  <div className="numbers__sub--title">
-    Average ratings on iOS and Google Play
-  </div>
-  <div className="numbers__title">97%</div>
-  <div className="numbers__sub--title">
-    Of Summarist members create a better reading habit 
-  </div>
-</div>
-</div>
+    <div className="numbers__card">
+      <div className="numbers__icon">
+        <BiCrown />
+      </div>
+      <div className="numbers__title">3 Million</div>
+      <div className="numbers__sub--title">
+        Downloads on all platforms
+      </div>
+    </div>
+
+    <div className="numbers__card">
+      <div className="numbers__icon numbers__star--icon">
+        <BsStarFill />
+        <BsStarFill />
+        <BsStarFill />
+        <BsStarFill />
+        <BsStarHalf />
+      </div>
+      <div className="numbers__title">4.5 Stars</div>
+      <div className="numbers__sub--title">
+        Average ratings on iOS and Google Play
+      </div>
+    </div>
+    <div className="numbers__card">
+      <div className="numbers__title">97%</div>
+      <div className="numbers__sub--title">
+        Of Summarist members create a better reading habit
+      </div>
+    </div>
   </div>
 </section>
 </main>
+<footer className="footer">
+  <div className="footer__links">
+    <div>
+      <h3>Actions</h3>
+      <p>Summarist Magazine</p>
+      <p>Cancel Subscription</p>
+      <p>Help</p>
+      <p>Contact us</p>
+    </div>
+
+    <div>
+      <h3>Useful Links</h3>
+      <p>Pricing</p>
+      <p>Summarist Business</p>
+      <p>Gift Cards</p>
+      <p>Authors & Publishers</p>
+    </div>
+
+    <div>
+      <h3>Company</h3>
+      <p>About</p>
+      <p>Careers</p>
+      <p>Partners</p>
+      <p>Code of Conduct</p>
+    </div>
+
+    <div>
+      <h3>Other</h3>
+      <p>Sitemap</p>
+      <p>Legal Notice</p>
+      <p>Terms of Service</p>
+      <p>Privacy Policies</p>
+    </div>
+  </div>
+
+  <p className="footer__copyright">
+    Copyright © 2023 Summarist.
+  </p>
+</footer>
 </>
   )
 }
