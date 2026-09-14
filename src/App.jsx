@@ -7,23 +7,50 @@ import './App.css'
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
+  const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
   return (
     <>
     <nav>
   <h1>Summarist</h1>
 
   <div>
-    <span>Login</span>
+    <span onClick={() => setShowLogin(true)}>Login</span>
     <span>About</span>
     <span>Contact</span>
     <span>Help</span>
   </div>
 </nav>
+
+{showLogin && (
+  <div className="login__wrapper">
+    <div className="login">
+      <button onClick={() => setShowLogin(false)}>X</button>
+
+      <h2>Log in to Summarist</h2>
+
+      <input
+  type="email"
+  placeholder="Email Address"
+  value={email}
+  onChange={(event) => setEmail(event.target.value)}
+/>
+
+<input
+  type="password"
+  placeholder="Password"
+  value={password}
+  onChange={(event) => setPassword(event.target.value)}
+/>
+
+      <button>Login</button>
+    </div>
+  </div>
+)}
 <main>
   <section className="hero">
   <div className="hero__text">
     <h2>Gain more knowledge in less time</h2>
-    </div>
 
     <p>
       Great summaries for busy people, individuals who barely have time to read,
@@ -31,8 +58,9 @@ function App() {
     </p>
 
     <button onClick={() => setShowLogin(true)}>
-        Login
-</button>
+      Login
+    </button>
+  </div>
 
   <img src={heroImg} alt="Books" />
 </section>
