@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BiCrown } from "react-icons/bi";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import { AiFillFileText, AiFillBulb, AiFillAudio } from "react-icons/ai";
@@ -9,6 +9,17 @@ function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
+const [books, setBooks] = useState([]);
+useEffect(() => {
+  fetch(
+    "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      setBooks(data);
+    });
+}, []);
   return (
     <>
     <nav>
@@ -21,7 +32,16 @@ const [password, setPassword] = useState("");
     <span>Help</span>
   </div>
 </nav>
-
+<h2 className="books__title">Recommended For You</h2>
+  <div className="books">
+  {books.map((book) => (
+    <div className="book" key={book.id}>
+      <img src={book.imageLink} alt={book.title} />
+      <h3>{book.title}</h3>
+      <p>{book.author}</p>
+    </div>
+  ))}
+</div>
 {showLogin && (
   <div className="login__wrapper">
     <div className="login">
