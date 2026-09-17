@@ -22,8 +22,14 @@ body {
 }
 
 .hero__text {
-  max-width: 600px;
+  max-width: 500px;
 }
+
+.hero img {
+  width: 500px;
+  max-width: 45%;
+}
+
 
 .hero img {
   width: 400px;
@@ -217,10 +223,7 @@ nav span {
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
 }
-@media (max-width: 768px) {
-  .numbers__wrapper {
-    grid-template-columns: 1fr;
-  }
+
   .hero {
   flex-direction: column;
   text-align: center;
@@ -234,7 +237,6 @@ nav span {
 
 .hero h2 {
   font-size: 32px;
-}
 }
 
 .numbers__card {
@@ -281,11 +283,14 @@ nav span {
   height: 20px;
 }
 .numbers {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 40px 24px;
 }
 
 .numbers h2 {
   text-align: center;
+  font-size: 32px;
   margin-bottom: 32px;
 }
 
@@ -296,6 +301,7 @@ nav span {
   max-width: 1000px;
   margin: 0 auto;
 }
+
 .footer {
   padding: 60px 72px 24px;
 }
@@ -324,17 +330,6 @@ nav span {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (max-width: 768px) {
-  .footer {
-  padding: 40px 20px;
-}
-
-.footer__links {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-}
 .login__wrapper {
   position: fixed;
   top: 0;
@@ -376,10 +371,6 @@ nav span {
   cursor: pointer;
 }
 
-.hero__text {
-  max-width: 500px;
-}
-
 .hero__text p {
   line-height: 1.5;
   margin: 30px 0;
@@ -390,10 +381,6 @@ nav span {
   padding: 16px;
 }
 
-.hero img {
-  width: 500px;
-  max-width: 45%;
-}
 .books {
   max-width: 1200px;
   margin: 0 auto;
@@ -463,10 +450,21 @@ nav span {
     width: 100%;
     box-sizing: border-box;
   }
+
   .statistics__data {
-  flex-direction: column;
-  gap: 4px;
-}
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .footer {
+    padding: 40px 20px;
+  }
+
+  .footer__links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
 }
 @media (max-width: 768px) {
   .numbers__wrapper {
