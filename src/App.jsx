@@ -20,6 +20,14 @@ useEffect(() => {
       setBooks(data);
     });
 }, []);
+const handleLogin = () => {
+  if (!email || !password) {
+    alert("Please enter your email and password");
+    return;
+  }
+
+  setShowLogin(false);
+};
   return (
     <>
     <nav>
@@ -27,9 +35,27 @@ useEffect(() => {
 
   <div>
     <span onClick={() => setShowLogin(true)}>Login</span>
-    <span>About</span>
-    <span>Contact</span>
-    <span>Help</span>
+    <span
+  onClick={() =>
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
+  }
+>
+  About
+</span>
+    <span
+  onClick={() =>
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+  }
+>
+  Contact
+</span>
+    <span
+  onClick={() =>
+    document.getElementById("help")?.scrollIntoView({ behavior: "smooth" })
+  }
+>
+  Help
+</span>
   </div>
 </nav>
 <h2 className="books__title">Recommended For You</h2>
@@ -63,7 +89,7 @@ useEffect(() => {
   onChange={(event) => setPassword(event.target.value)}
 />
 
-      <button>Login</button>
+      <button onClick={handleLogin}>Login</button>
     </div>
   </div>
 )}
@@ -112,6 +138,7 @@ useEffect(() => {
       <p>Gain valuable insights from briefcasts.</p>
     </div>
     </div>
+    
     <div className="statistics__wrapper">
   <div className="statistics__content--header statistics__content--header-second">
     <div className="statistics__heading statistics__heading--active">
@@ -255,19 +282,21 @@ useEffect(() => {
   </div>
 
   <div className="review__body">
-    If you're a busy person who
-    <b> loves reading but doesn't have the time</b> to read every book in full,
-    this app is for you! The summaries are thorough and provide a great overview
-    of the book's content.
-  </div>
-  <div className="reviews__btn--wrapper">
+  If you're a busy person who
+  <b> loves reading but doesn't have the time</b> to read every book in full,
+  this app is for you! The summaries are thorough and provide a great overview
+  of the book's content.
 </div>
 </div>
-  </div>
+
+<div className="reviews__btn--wrapper">
+  <button onClick={() => setShowLogin(true)}>
+    Login
+  </button>
+</div>
+
+</div>
 </section>
-<button onClick={() => setShowLogin(true)}>
-  Login
-</button>
 
 <section className="numbers">
   <h2>Start growing with Summarist now</h2>
@@ -304,6 +333,19 @@ useEffect(() => {
     </div>
   </div>
 </section>
+<section id="about">
+    <h2>About</h2>
+  </section>
+
+  <section id="contact">
+  <h2>Contact</h2>
+  <p>Have a question or need help? Get in touch with our support team.</p>
+  <button>Contact Us</button>
+</section>
+
+  <section id="help">
+    <h2>Help</h2>
+  </section>
 </main>
 <footer className="footer">
   <div className="footer__links">
