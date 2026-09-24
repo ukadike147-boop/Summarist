@@ -6,6 +6,7 @@ import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import { AiFillFileText, AiFillBulb, AiFillAudio } from "react-icons/ai";
 import heroImg from './assets/hero.png'
 import './App.css'
+import MyLibrary from "./Pages/MyLibrary";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -400,6 +401,7 @@ return (
         }
       />
       <Route path="/for-you" element={<ForYou />} />
+      <Route path="/library" element={<MyLibrary />} />
     </Routes>
   );
 }
