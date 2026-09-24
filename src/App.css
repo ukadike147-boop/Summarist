@@ -503,3 +503,44 @@ nav span {
   padding: 64px 20px;
   text-align: center;
 }
+
+.foryou {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  min-height: 100vh;
+  background-color: #f7faf9;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #032b41;
+  text-decoration: none;
+}
+
+.foryou__content {
+  flex: 1;
+  padding: 24px;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  border-bottom: 1px solid #e1e7ea;
+  padding-bottom: 16px;
+}
+
+.searchbar input {
+  padding: 8px 12px;
+  width: 300px;
+}

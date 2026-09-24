@@ -1,3 +1,5 @@
+import { Routes, Route, useNavigate } from "react-router-dom";
+import ForYou from "./Pages/ForYou";
 import { useState, useEffect } from "react";
 import { BiCrown } from "react-icons/bi";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
@@ -9,6 +11,7 @@ function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
+ const navigate = useNavigate();
 const [books, setBooks] = useState([]);
 useEffect(() => {
   fetch(
@@ -27,10 +30,15 @@ const handleLogin = () => {
   }
 
   setShowLogin(false);
+navigate("/for-you");
 };
-  return (
-    <>
-    <nav>
+return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+       <nav>
   <h1>Summarist</h1>
 
   <div>
@@ -387,10 +395,13 @@ const handleLogin = () => {
   <p className="footer__copyright">
     Copyright © 2023 Summarist.
   </p>
-</footer>
-</>
-  )
+          </footer>
+          </>
+        }
+      />
+      <Route path="/for-you" element={<ForYou />} />
+    </Routes>
+  );
 }
-
 
 export default App
