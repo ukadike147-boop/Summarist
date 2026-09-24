@@ -58,8 +58,9 @@ const handleLogin = () => {
 </span>
   </div>
 </nav>
+{/*
 <h2 className="books__title">Recommended For You</h2>
-  <div className="books">
+<div className="books">
   {books.map((book) => (
     <div className="book" key={book.id}>
       <img src={book.imageLink} alt={book.title} />
@@ -68,6 +69,7 @@ const handleLogin = () => {
     </div>
   ))}
 </div>
+*/}
 {showLogin && (
   <div className="login__wrapper">
     <div className="login">
@@ -138,7 +140,7 @@ const handleLogin = () => {
       <p>Gain valuable insights from briefcasts.</p>
     </div>
     </div>
-    
+
     <div className="statistics__wrapper">
   <div className="statistics__content--header statistics__content--header-second">
     <div className="statistics__heading statistics__heading--active">
