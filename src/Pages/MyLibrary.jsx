@@ -3,18 +3,16 @@ import SearchBar from "../components/SearchBar";
 import { useEffect, useState } from "react";
 
 function MyLibrary() {
-    const [savedBooks, setSavedBooks] = useState([]);
-
-useEffect(() => {
-  const books = JSON.parse(localStorage.getItem("savedBooks")) || [];
-  setSavedBooks(books);
+  const [savedBooks, setSavedBooks] = useState([]);
   const [finishedBooks, setFinishedBooks] = useState([]);
-  const saved = JSON.parse(localStorage.getItem("savedBooks")) || [];
-  const finished = JSON.parse(localStorage.getItem("finishedBooks")) || [];
 
-  setSavedBooks(saved);
-  setFinishedBooks(finished);
-}, []);
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("savedBooks")) || [];
+    const finished = JSON.parse(localStorage.getItem("finishedBooks")) || [];
+
+    setSavedBooks(saved);
+    setFinishedBooks(finished);
+  }, []);
 
 const markAsFinished = (book) => {
   const updatedSavedBooks = savedBooks.filter(

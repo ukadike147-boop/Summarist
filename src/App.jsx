@@ -7,6 +7,7 @@ import { AiFillFileText, AiFillBulb, AiFillAudio } from "react-icons/ai";
 import heroImg from './assets/hero.png'
 import './App.css'
 import MyLibrary from "./Pages/MyLibrary";
+import Settings from "./Pages/Settings";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -402,6 +403,7 @@ return (
       />
       <Route path="/for-you" element={<ForYou />} />
       <Route path="/library" element={<MyLibrary />} />
+      <Route path="/settings" element={<Settings />} />
     </Routes>
   );
 }
