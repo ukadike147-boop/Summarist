@@ -8,6 +8,7 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import MyLibrary from "./Pages/MyLibrary";
 import Settings from "./Pages/Settings";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -26,10 +27,8 @@ useEffect(() => {
     });
 }, []);
 const handleLogin = () => {
-  if (!email || !password) {
-    alert("Please enter your email and password");
-    return;
-  }
+
+  signInWithEmailAndPassword(auth, email, password)
 
   setShowLogin(false);
 navigate("/for-you");
