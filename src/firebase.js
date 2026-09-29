@@ -1,12 +1,16 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 const firebaseConfig = {
-apiKey: "YOUR_API_KEY",
-authDomain: "YOUR_PROJECT.firebaseapp.com",
-projectId: "YOUR_PROJECT_ID",
-storageBucket: "YOUR_PROJECT.appspot.com",
-messagingSenderId: "YOUR_SENDER_ID",
-appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyD3F09xwhokl-dO8ELtQTpna4abR7K_gsY",
+  authDomain: "summarist-46459.firebaseapp.com",
+  projectId: "summarist-46459",
+  storageBucket: "summarist-46459.firebasestorage.app",
+  messagingSenderId: "167996295260",
+  appId: "1:167996295260:web:858d412afad450e0dc3e99",
+  measurementId: "G-P66PEXYNXH"
 };
+
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+const auth = getAuth(app);
+
+export { auth };

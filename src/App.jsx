@@ -9,6 +9,7 @@ import './App.css'
 import MyLibrary from "./Pages/MyLibrary";
 import Settings from "./Pages/Settings";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebase";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -26,13 +27,16 @@ useEffect(() => {
       setBooks(data);
     });
 }, []);
-const handleLogin = () => {
-
-  signInWithEmailAndPassword(auth, email, password)
-
-  setShowLogin(false);
-navigate("/for-you");
+const handleLogin = async () => {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    setShowLogin(false);
+    navigate("/for-you");
+  } catch (error) {
+    console.error(error.message);
+  }
 };
+
 return (
     <Routes>
       <Route
