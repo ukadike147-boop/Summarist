@@ -339,17 +339,6 @@ nav span {
   z-index: 1000;
 }
 
-.login {
-  background-color: white;
-  width: 100%;
-  max-width: 400px;
-  padding: 40px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 .login h2 {
   text-align: center;
   color: #032b41;
@@ -526,11 +515,6 @@ nav span {
   text-decoration: none;
 }
 
-.foryou__content {
-  flex: 1;
-  padding: 24px;
-}
-
 .searchbar {
   display: flex;
   align-items: center;
@@ -639,4 +623,165 @@ nav span {
 .library__empty p {
   margin: 0;
   color: #394547;
+}
+.settings__title {
+
+font-size: 32px;
+
+color: #032b41;
+
+margin-bottom: 32px;
+
+}
+
+.settings__details {
+
+max-width: 700px;
+
+}
+
+.settings__subtitle {
+
+font-size: 18px;
+
+color: #032b41;
+
+margin-bottom: 12px;
+
+}
+
+.settings__details p {
+
+color: #394547;
+
+margin-bottom: 16px;
+
+}
+
+.settings__button {
+
+background-color: #2bd97c;
+
+color: #032b41;
+
+border: none;
+
+border-radius: 4px;
+
+padding: 12px 24px;
+
+font-size: 16px;
+
+cursor: pointer;
+
+margin-bottom: 24px;
+
+}
+
+.settings__divider {
+
+border: none;
+
+border-top: 1px solid #e1e7ea;
+
+margin: 24px 0;
+
+}
+
+.book__button {
+  background-color: #2bd97c;
+  color: #032b41;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+.login {
+  position: relative;
+  background-color: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login .login__close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: #000;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+.login__guest {
+  background-color: #3f5fb3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.login__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.login__divider span {
+  flex: 1;
+  height: 1px;
+  background-color: #d9e1e5;
+}
+
+.login__divider p {
+  margin: 0;
+  font-size: 14px;
+  color: #6b757b;
+}
+
+.login__google {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.login__submit {
+  background-color: #2bd97c;
+  color: #032b41;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.login__forgot,
+.login__signup {
+  text-align: center;
+  color: #4285f4;
+  font-size: 13px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.login__signup {
+  background-color: #f1f6f4;
+  padding: 12px;
 }

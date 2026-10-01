@@ -6,6 +6,10 @@ function ForYou() {
   const [selectedBook, setSelectedBook] = useState(null);
   const [recommendedBooks, setRecommendedBooks] = useState([]);
   const [suggestedBooks, setSuggestedBooks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredSuggestedBooks = suggestedBooks.filter((book) =>
+  book.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
 
  useEffect(() => {
   fetch(
@@ -55,7 +59,11 @@ const saveBook = (book) => {
     <div className="foryou">
       <Sidebar />
       <div className="foryou__content">
-        <SearchBar />
+        <SearchBar
+  searchTerm={searchTerm}
+  setSearchTerm={setSearchTerm}
+/>
+
         <h1>For You</h1>
 
     <h2>Selected just for you</h2>
@@ -84,7 +92,10 @@ const saveBook = (book) => {
       <h3>{book.title}</h3>
       <p>{book.author}</p>
 
-      <button onClick={() => saveBook(book)}>
+     <button
+  className="book__button"
+  onClick={() => saveBook(book)}
+>
   Save
 </button>
     </div>
@@ -94,13 +105,16 @@ const saveBook = (book) => {
   <h2>Suggested For You</h2>
 
 <div className="books">
-  {suggestedBooks.map((book) => (
+  {filteredSuggestedBooks.map((book) => (
     <div className="book" key={book.id}>
       <img src={book.imageLink} alt={book.title} />
       <h3>{book.title}</h3>
       <p>{book.author}</p>
 
-      <button onClick={() => saveBook(book)}>
+      <button
+  className="book__button"
+  onClick={() => saveBook(book)}
+>
   Save
 </button>
     </div>

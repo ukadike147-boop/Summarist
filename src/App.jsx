@@ -8,7 +8,10 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import MyLibrary from "./Pages/MyLibrary";
 import Settings from "./Pages/Settings";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  signInAnonymously,
+} from "firebase/auth";
 import { auth } from "./firebase";
 
 function App() {
@@ -27,15 +30,32 @@ useEffect(() => {
       setBooks(data);
     });
 }, []);
+
 const handleLogin = async () => {
+   try {
+      await signInWithEmailAndPassword(auth, email, password);
+      setShowLogin(false);
+      navigate("/for-you");
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  const handleGuestLogin = async () => {
   try {
-    await signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(
+      auth,
+      "guest@gmail.com",
+      "guest123"
+    );
+
     setShowLogin(false);
     navigate("/for-you");
   } catch (error) {
     console.error(error.message);
   }
 };
+
 
 return (
     <Routes>
@@ -86,10 +106,35 @@ return (
 {showLogin && (
   <div className="login__wrapper">
     <div className="login">
-      <button onClick={() => setShowLogin(false)}>X</button>
+      <button
+  className="login__close"
+  onClick={() => setShowLogin(false)}
+>
+  X
+</button>
 
       <h2>Log in to Summarist</h2>
+      <button
+  className="login__guest"
+  onClick={handleGuestLogin}
+>
+  Login as a Guest
+</button>
 
+<div className="login__divider">
+  <span></span>
+  <p>or</p>
+  <span></span>
+</div>
+
+<button className="login__google">
+  Login with Google
+</button>
+ <div className="login__divider">
+  <span></span>
+  <p>or</p>
+  <span></span>
+</div>
       <input
   type="email"
   placeholder="Email Address"
@@ -104,7 +149,14 @@ return (
   onChange={(event) => setPassword(event.target.value)}
 />
 
-      <button onClick={handleLogin}>Login</button>
+    <button className="login__submit" onClick={handleLogin}>
+  Login
+</button>  
+<p className="login__forgot">Forgot your password?</p>
+
+<p className="login__signup">
+  Don't have an account?
+</p>
     </div>
   </div>
 )}

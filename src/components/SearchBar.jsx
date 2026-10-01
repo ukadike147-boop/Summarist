@@ -1,9 +1,14 @@
 import { AiOutlineSearch } from "react-icons/ai";
 
-function SearchBar() {
+function SearchBar({ searchTerm, setSearchTerm }) {
   return (
     <div className="searchbar">
-      <input type="text" placeholder="Search for books" />
+      <input
+        type="text"
+        placeholder="Search for books"
+        value={searchTerm}
+        onChange={(event) => setSearchTerm(event.target.value)}
+      />
       <AiOutlineSearch />
     </div>
   );

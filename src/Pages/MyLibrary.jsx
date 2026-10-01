@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 function MyLibrary() {
   const [savedBooks, setSavedBooks] = useState([]);
   const [finishedBooks, setFinishedBooks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("savedBooks")) || [];
@@ -13,6 +14,14 @@ function MyLibrary() {
     setSavedBooks(saved);
     setFinishedBooks(finished);
   }, []);
+  
+  const filteredSavedBooks = savedBooks.filter((book) =>
+  book.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
+const filteredFinishedBooks = finishedBooks.filter((book) =>
+  book.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
 
 const markAsFinished = (book) => {
   const updatedSavedBooks = savedBooks.filter(
@@ -40,7 +49,10 @@ const markAsFinished = (book) => {
       <Sidebar />
 
       <div className="foryou__content">
-        <SearchBar />
+        <SearchBar
+  searchTerm={searchTerm}
+  setSearchTerm={setSearchTerm}
+/>
         <h1>My Library</h1>
 
         <h2>Saved Books</h2>
@@ -51,12 +63,15 @@ const markAsFinished = (book) => {
   </div>
 ) : (
   <div className="books">
-    {savedBooks.map((book) => (
+    {filteredSavedBooks.map((book) => (
       <div className="book" key={book.id}>
         <img src={book.imageLink} alt={book.title} />
         <h3>{book.title}</h3>
         <p>{book.author}</p>
-        <button onClick={() => markAsFinished(book)}>
+        <button
+  className="book__button"
+  onClick={() => markAsFinished(book)}
+>
   Mark as Finished
 </button>
       </div>
@@ -72,7 +87,7 @@ const markAsFinished = (book) => {
   </div>
 ) : (
   <div className="books">
-    {finishedBooks.map((book) => (
+    {filteredFinishedBooks.map((book) => (
       <div className="book" key={book.id}>
         <img src={book.imageLink} alt={book.title} />
         <h3>{book.title}</h3>
