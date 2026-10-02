@@ -13,6 +13,8 @@ import {
   signInAnonymously,
 } from "firebase/auth";
 import { auth } from "./firebase";
+import ChoosePlan from "./Pages/ChoosePlan";
+import Home from "./Pages/Home";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -459,6 +461,8 @@ return (
       <Route path="/for-you" element={<ForYou />} />
       <Route path="/library" element={<MyLibrary />} />
       <Route path="/settings" element={<Settings />} />
+      <Route path="/choose-plan" element={<ChoosePlan />} />
+      <Route path="/" element={<Home />} />
     </Routes>
   );
 }
