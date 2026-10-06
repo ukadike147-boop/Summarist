@@ -1,18 +1,21 @@
 import { useNavigate } from "react-router-dom";
+import hero from "../assets/hero.png";
 function Home() {
     const navigate = useNavigate();
   return (
-    <div className="home">
-      <nav className="home__nav">
-        <h2>Summarist</h2>
+    <>
+    <nav className="home__nav">
+  <div className="home__nav--inner">
+    <h2>Summarist</h2>
 
-        <div className="home__links">
-          <button>Login</button>
-          <span>About</span>
-          <span>Contact</span>
-          <span>Help</span>
-        </div>
-      </nav>
+    <div className="home__links">
+      <button onClick={() => navigate("/login")}>Login</button>
+      <span>About</span>
+      <span>Contact</span>
+      <span>Help</span>
+    </div>
+  </div>
+</nav>
 
       <section className="home__hero">
         <div className="home__hero--left">
@@ -32,10 +35,11 @@ function Home() {
         </div>
 
         <div className="home__hero--right">
-  <img src="/your-image.png" alt="Summarist illustration" />
+  <img src={hero} alt="Summarist illustration" />
 </div>
       </section>
-    </div>
+      </>
+      
   );
 }
 
