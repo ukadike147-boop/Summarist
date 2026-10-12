@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import SearchBar from "../components/SearchBar";
+import { useNavigate } from "react-router-dom";
 
 function ForYou() {
   const [selectedBook, setSelectedBook] = useState(null);
@@ -10,6 +11,7 @@ function ForYou() {
   const filteredSuggestedBooks = suggestedBooks.filter((book) =>
   book.title.toLowerCase().includes(searchTerm.toLowerCase())
 );
+const navigate = useNavigate();
 
  useEffect(() => {
   fetch(
@@ -86,43 +88,101 @@ const saveBook = (book) => {
 <h2>Recommended For You</h2>
 
 <div className="books">
-  {recommendedBooks.map((book) => (
-    <div className="book" key={book.id}>
-      <img src={book.imageLink} alt={book.title} />
-      <h3>{book.title}</h3>
-      <p>{book.author}</p>
 
-     <button
-  className="book__button"
-  onClick={() => saveBook(book)}
+{recommendedBooks.map((book) => (
+
+<div
+
+className="book"
+
+key={book.id}
+
+onClick={() => navigate("/book/" + book.id)}
+
 >
-  Save
-</button>
-    </div>
-  ))}
- </div>
 
-  <h2>Suggested For You</h2>
+<img src={book.imageLink} alt={book.title} />
+
+<h3>{book.title}</h3>
+
+<p>{book.author}</p>
+
+<button
+
+className="book__button"
+
+onClick={(event) => {
+
+event.stopPropagation();
+
+saveBook(book);
+
+}}
+
+>
+
+Save
+
+</button>
+
+</div>
+
+))}
+
+</div>
+
+<h2>Suggested For You</h2>
 
 <div className="books">
-  {filteredSuggestedBooks.map((book) => (
-    <div className="book" key={book.id}>
-      <img src={book.imageLink} alt={book.title} />
-      <h3>{book.title}</h3>
-      <p>{book.author}</p>
 
-      <button
-  className="book__button"
-  onClick={() => saveBook(book)}
+{filteredSuggestedBooks.map((book) => (
+
+<div
+
+className="book"
+
+key={book.id}
+
+onClick={() => navigate("/book/" + book.id)}
+
 >
-  Save
+
+<img src={book.imageLink} alt={book.title} />
+
+<h3>{book.title}</h3>
+
+<p>{book.author}</p>
+
+<button
+
+className="book__button"
+
+onClick={(event) => {
+
+event.stopPropagation();
+
+saveBook(book);
+
+}}
+
+>
+
+Save
+
 </button>
-    </div>
-  ))}
+
 </div>
+
+))}
+
 </div>
+
 </div>
-  );
+
+</div>
+
+);
+
 }
 
 export default ForYou;

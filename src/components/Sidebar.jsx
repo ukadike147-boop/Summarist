@@ -2,8 +2,25 @@ import { Link } from "react-router-dom";
 import { AiOutlineHome, AiOutlineSetting } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 function Sidebar() {
+    const handleLogout = async () => {
+  try {
+    await signOut(auth);
+    navigate("/");
+  } catch (error) {
+    console.error("Logout failed:", error);
+  }
+};
+<button
+  type="button"
+  className="sidebar__link"
+  onClick={handleLogout}
+>
+  <BiLogOut /> Logout
+</button>
   return (
     <div className="sidebar">
       <h2 className="sidebar__logo">Summarist</h2>

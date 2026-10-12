@@ -1,3 +1,4 @@
+import ProtectedRoute from "./components/ProtectedRoute";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import ForYou from "./Pages/ForYou";
 import { useState, useEffect } from "react";
@@ -11,10 +12,14 @@ import Settings from "./Pages/Settings";
 import {
   signInWithEmailAndPassword,
   signInAnonymously,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "./firebase";
 import ChoosePlan from "./Pages/ChoosePlan";
 import Home from "./Pages/Home";
+import BookInfo from "./Pages/BookInfo";
+
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -57,7 +62,16 @@ const handleLogin = async () => {
     console.error(error.message);
   }
 };
-
+const handleGoogleLogin = async () => {
+  try {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider);
+    setShowLogin(false);
+    navigate("/for-you");
+  } catch (error) {
+    console.error(error.message);
+  }
+};
 
 return (
     <Routes>
@@ -129,7 +143,10 @@ return (
   <span></span>
 </div>
 
-<button className="login__google">
+<button
+  className="login__google"
+  onClick={handleGoogleLogin}
+>
   Login with Google
 </button>
  <div className="login__divider">
@@ -458,13 +475,13 @@ return (
           </>
         }
       />
-      <Route path="/for-you" element={<ForYou />} />
-      <Route path="/library" element={<MyLibrary />} />
-      <Route path="/settings" element={<Settings />} />
-      <Route path="/choose-plan" element={<ChoosePlan />} />
-      <Route path="/" element={<Home />} />
+    <Route element={<ProtectedRoute />}>
+        <Route path="/for-you" element={<ForYou />} />
+        <Route path="/library" element={<MyLibrary />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/choose-plan" element={<ChoosePlan />} />
+      </Route>
     </Routes>
   );
 }
-
-export default App
+export default App;
