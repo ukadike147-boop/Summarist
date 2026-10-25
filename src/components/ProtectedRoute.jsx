@@ -11,6 +11,7 @@ function ProtectedRoute() {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
+      console.log("Current Firebase user:", currentUser);
     });
 
     return () => unsubscribe();

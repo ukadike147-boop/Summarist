@@ -480,6 +480,7 @@ return (
         <Route path="/library" element={<MyLibrary />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/choose-plan" element={<ChoosePlan />} />
+        <Route path="/book/:id" element={<BookInfo />} />
       </Route>
     </Routes>
   );

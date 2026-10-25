@@ -951,3 +951,18 @@ align-items: center;
   align-items: center;
   justify-content: space-between;
 }
+.book-info {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  line-height: 1.6;
+}
+
+.book-info img {
+  max-width: 200px;
+  height: auto;
+}
+
+.book-info p {
+  margin-bottom: 20px;
+}

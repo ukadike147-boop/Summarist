@@ -28,10 +28,24 @@ const markAsFinished = (book) => {
     (savedBook) => savedBook.id !== book.id
   );
 
-  const updatedFinishedBooks = [...finishedBooks, book];
+  const updatedFinishedBooks = finishedBooks.some(
+  (finishedBook) => finishedBook.id === book.id
+)
+  ? finishedBooks
+  : [...finishedBooks, book];
 
   setSavedBooks(updatedSavedBooks);
-  setFinishedBooks(updatedFinishedBooks);
+  const uniqueFinished = finished.filter(
+  (book, index, books) =>
+    books.findIndex((item) => item.id === book.id) === index
+);
+
+setFinishedBooks(uniqueFinished);
+
+localStorage.setItem(
+  "finishedBooks",
+  JSON.stringify(uniqueFinished)
+);
 
   localStorage.setItem(
     "savedBooks",
